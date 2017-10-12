@@ -31,7 +31,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src')],
+        // include: [resolve('src')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -55,9 +55,17 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        include: [resolve('src')],
+        use: [
+          'style-loader',
+          'css-loader?sourceMap'
+        ]
+      },
+      {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src')]
+        loader: 'babel-loader'
+        // include: [resolve('src')]
       },
       {
         test: /\.html$/,
